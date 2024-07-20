@@ -1,0 +1,94 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Text-to-Image Generator</title>
+</head>
+<body>
+    <h1>Text-to-Image Generator</h1>
+    <form method="post">
+        <label for="prompt">Text prompt:</label>
+        <input type="text" id="prompt" name="prompt" required>
+        <button type="submit">Generate Image</button>
+    </form>
+    {% if img_data %}
+        <h2>Generated Image:</h2>
+        <p>{{ prompt }}</p>
+        <img src="data:image/png;base64,{{ img_data }}" alt="Generated Image">
+    {% endif %}
+    {% if error %}
+        <p style="color: red;">An error occurred: {{ error }}</p>
+    {% endif %}
+    {% if warning %}
+        <p style="color: orange;">{{ warning }}</p>
+    {% endif %}
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 50px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+        }
+        .card {
+            margin-top: 20px;
+        }
+        .img-preview {
+            width: 100%;
+            height: auto;
+        }
+        .alert {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Shubham's text-to-Image Generator app</h1>
+        <form method="post" action="/" class="mt-4">
+            <div class="form-group">
+                <label for="prompt">Enter a Text Prompt:</label>
+                <input type="text" class="form-control" id="prompt" name="prompt" placeholder="Describe the image you want to generate" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Generate Image</button>
+        </form>
+        
+        {% if img_data %}
+        <div class="card mt-4">
+            <div class="card-body text-center">
+                <h5 class="card-title">Generated Image for: "{{ prompt }}"</h5>
+                <img src="data:image/png;base64,{{ img_data }}" alt="Generated Image" class="img-preview mt-3">
+            </div>
+        </div>
+        {% endif %}
+        
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            Error: {{ error }}
+        </div>
+        {% endif %}
+        
+        {% if warning %}
+        <div class="alert alert-warning" role="alert">
+            {{ warning }}
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
